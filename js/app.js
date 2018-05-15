@@ -72,14 +72,16 @@ function flipCard(card) {
 }
 
 function checkCards(cards) {
-	if (cards[0].firstElementChild.className === cards[1].firstElementChild.className) {
-		cards[0].className = 'card match';
-		cards[1].className = 'card match';
-	} else {
-		cards[0].className = 'card';
-		cards[1].className = 'card';
-	}
+	setTimeout(function() {
+		if (cards[0].firstElementChild.className === cards[1].firstElementChild.className) {
+			cards[0].className = 'card match';
+			cards[1].className = 'card match';
+		} else {
+			cards[0].className = 'card';
+			cards[1].className = 'card';
+		}
 
-	cards.pop();
-	cards.pop();
+		cards.pop();
+		cards.pop();
+	}, 400); // wait 0.4 seconds to check both cards
 }
