@@ -54,6 +54,7 @@ function shuffle(array) {
  * another function that you call from this one)
  */
 let openCards = [];
+const moves = document.querySelector('.moves');
 
 deck.addEventListener('click', function(event) {
 	//console.log(`The card with ${event.target.firstElementChild.className} was clicked.`);
@@ -84,4 +85,8 @@ function checkCards(cards) {
 		cards.pop();
 		cards.pop();
 	}, 400); // wait 0.4 seconds to check both cards
+
+	let moveCount = parseInt(moves.textContent);
+	moveCount++;
+	moves.textContent = moveCount.toString();
 }
