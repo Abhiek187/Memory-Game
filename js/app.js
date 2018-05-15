@@ -9,7 +9,7 @@ let cards = document.getElementsByClassName('card');
  *   - loop through each card and create its HTML
  *   - add each card's HTML to the page
  */
-cards = shuffle(Array.from(cards)); // Will convert cards from HTMLCollection to array
+cards = shuffle(Array.from(cards)); // will convert cards from HTMLCollection to array
 const deck = document.querySelector('.deck');
 const fragment = document.createDocumentFragment();
 
@@ -54,17 +54,19 @@ function shuffle(array) {
  * another function that you call from this one)
  */
 let openCards = [];
+let canFlip = true;
 const moves = document.querySelector('.moves');
 
 deck.addEventListener('click', function(event) {
-	//console.log(`The card with ${event.target.firstElementChild.className} was clicked.`);
-	const card = event.target;
+	if (canFlip) {
+		const card = event.target;
 
-	if (card.className === 'card')
-		flipCard(card);
+		if (card.className === 'card')
+			flipCard(card);
 
-	if (openCards.length === 2)
-		checkCards(openCards);
+		if (openCards.length === 2)
+			checkCards(openCards);
+	}
 });
 
 function flipCard(card) {
@@ -73,6 +75,8 @@ function flipCard(card) {
 }
 
 function checkCards(cards) {
+	canFlip = false; // disable flipping cards while checking
+
 	setTimeout(function() {
 		if (cards[0].firstElementChild.className === cards[1].firstElementChild.className) {
 			cards[0].className = 'card match';
@@ -84,6 +88,7 @@ function checkCards(cards) {
 
 		cards.pop();
 		cards.pop();
+		canFlip = true;
 	}, 400); // wait 0.4 seconds to check both cards
 
 	let moveCount = parseInt(moves.textContent);
