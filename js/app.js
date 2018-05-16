@@ -136,18 +136,36 @@ function checkCards(cards) {
 }
 
 function displayWinMessage() {
+	/* <div style="text-align: center; padding: 10% 0">
+	 * 		<h1 style="font-weight: bold">Congratulations! You Won!</h1>
+	 * 		<p style="white-space: pre">With x moves and x stars in x:xx.\r\nWoooooo!</p>
+	 * 		<button type="button" style="background-color: limegreen; border-radius: 5px"
+	 *  		onclick="window.location.reload()">Play again!</button>
+	 * </div>
+	 */
 	document.querySelector('.container').remove();
 
-	const winMessage = document.createElement('p');
-	winMessage.setAttribute('style', 'white-space: pre'); // will allow for newlines w/ \r\n
-	winMessage.textContent = 'Congratulations! You Won!\r\nWith ' + moves.textContent +
-		' moves and ' + starCount + ' star(s) in ' + timer.textContent + '.\r\nWoooooo!';
-	document.body.appendChild(winMessage);
+	const winMessage = document.createElement('div');
+	winMessage.setAttribute('style', 'text-align: center; padding: 10% 0');
+	document.body.insertBefore(winMessage, document.body.firstChild); // insert before <script>
+
+	const congrats = document.createElement('h1');
+	congrats.style.fontWeight = 'bold';
+	congrats.textContent = 'Congratulations! You Won!';
+	winMessage.appendChild(congrats);
+
+	const stats = document.createElement('p');
+	stats.style.whiteSpace = 'pre'; // will allow for newlines w/ \r\n
+	stats.textContent = 'With ' + moves.textContent + ' moves and ' + starCount + ' star(s) in ' +
+		timer.textContent + '.\r\nWoooooo!';
+	winMessage.appendChild(stats);
 
 	const playAgainButton = document.createElement('button');
+	playAgainButton.setAttribute('type', 'button');
+	playAgainButton.setAttribute('style', 'background-color: limegreen; border-radius: 5px');
 	playAgainButton.textContent = 'Play again!';
 	playAgainButton.onclick = function() {
 		window.location.reload();
-	};
-	document.body.appendChild(playAgainButton);
+	}
+	winMessage.appendChild(playAgainButton);
 }
