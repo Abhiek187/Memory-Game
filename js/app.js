@@ -53,11 +53,17 @@ function shuffle(array) {
  *    + if all cards have matched, display a message with the final score (put this functionality in 
  * another function that you call from this one)
  */
+const restart = document.querySelector('.restart');
+restart.addEventListener('click', function() {
+	window.location.reload();
+});
+
 let openCards = [];
 let canFlip = true;
 const moves = document.querySelector('.moves');
 let cardPairs = 0;
-let stars = 3;
+const stars = document.querySelector('.stars');
+let starCount = 3;
 
 deck.addEventListener('click', function(event) {
 	if (canFlip) {
@@ -100,6 +106,14 @@ function checkCards(cards) {
 	let moveCount = parseInt(moves.textContent);
 	moveCount++;
 	moves.textContent = moveCount.toString();
+
+	if (moveCount === 16) {
+		stars.childNodes[5].firstElementChild.className = 'far fa-star'; // makes stars white
+		starCount--;
+	} else if (moveCount === 26) {
+		stars.childNodes[3].firstElementChild.className = 'far fa-star';
+		starCount--;
+	}
 }
 
 function displayWinMessage() {
@@ -107,8 +121,8 @@ function displayWinMessage() {
 
 	const winMessage = document.createElement('p');
 	winMessage.setAttribute('style', 'white-space: pre'); // will allow for newlines w/ \r\n
-	winMessage.textContent = 'Congratulations! You Won!\r\nWith ';
-	winMessage.textContent += moves.textContent + ' moves and ' + stars + ' stars.\r\nWoooooo!';
+	winMessage.textContent = 'Congratulations! You Won!\r\nWith ' +
+		moves.textContent + ' moves and ' + starCount + ' star(s).\r\nWoooooo!';
 	document.body.appendChild(winMessage);
 
 	const playAgainButton = document.createElement('button');
