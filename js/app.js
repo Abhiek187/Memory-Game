@@ -56,6 +56,8 @@ function shuffle(array) {
 let openCards = [];
 let canFlip = true;
 const moves = document.querySelector('.moves');
+let cardPairs = 0;
+let stars = 3;
 
 deck.addEventListener('click', function(event) {
 	if (canFlip) {
@@ -81,6 +83,7 @@ function checkCards(cards) {
 		if (cards[0].firstElementChild.className === cards[1].firstElementChild.className) {
 			cards[0].className = 'card match';
 			cards[1].className = 'card match';
+			cardPairs++;
 		} else {
 			cards[0].className = 'card';
 			cards[1].className = 'card';
@@ -89,9 +92,29 @@ function checkCards(cards) {
 		cards.pop();
 		cards.pop();
 		canFlip = true;
+
+		if (cardPairs === 8)
+			displayWinMessage();
 	}, 400); // wait 0.4 seconds to check both cards
 
 	let moveCount = parseInt(moves.textContent);
 	moveCount++;
 	moves.textContent = moveCount.toString();
+}
+
+function displayWinMessage() {
+	document.querySelector('.container').remove();
+
+	const winMessage = document.createElement('p');
+	winMessage.setAttribute('style', 'white-space: pre'); // will allow for newlines w/ \r\n
+	winMessage.textContent = 'Congratulations! You Won!\r\nWith ';
+	winMessage.textContent += moves.textContent + ' moves and ' + stars + ' stars.\r\nWoooooo!';
+	document.body.appendChild(winMessage);
+
+	const playAgainButton = document.createElement('button');
+	playAgainButton.textContent = 'Play again!';
+	playAgainButton.onclick = function() {
+		window.location.reload();
+	};
+	document.body.appendChild(playAgainButton);
 }
