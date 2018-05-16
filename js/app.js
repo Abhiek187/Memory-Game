@@ -64,6 +64,25 @@ const moves = document.querySelector('.moves');
 let cardPairs = 0;
 const stars = document.querySelector('.stars');
 let starCount = 3;
+const timer = document.querySelector('.timer');
+
+document.addEventListener('DOMContentLoaded', function startTimer() {
+	const start = new Date().getTime(); // time in milliseconds
+	const time = setInterval(function() {
+		if (cardPairs === 8)
+			clearInterval(time);
+
+		let now = new Date().getTime();
+		let minutes = Math.floor((now - start) / 60000);
+		let seconds = Math.floor((now - start) % 60000 / 1000);
+		timer.textContent = minutes + ':';
+
+		if (seconds < 10)
+			timer.textContent += '0' + seconds;
+		else
+			timer.textContent += seconds;
+	}, 0);
+});
 
 deck.addEventListener('click', function(event) {
 	if (canFlip) {
@@ -121,8 +140,8 @@ function displayWinMessage() {
 
 	const winMessage = document.createElement('p');
 	winMessage.setAttribute('style', 'white-space: pre'); // will allow for newlines w/ \r\n
-	winMessage.textContent = 'Congratulations! You Won!\r\nWith ' +
-		moves.textContent + ' moves and ' + starCount + ' star(s).\r\nWoooooo!';
+	winMessage.textContent = 'Congratulations! You Won!\r\nWith ' + moves.textContent +
+		' moves and ' + starCount + ' star(s) in ' + timer.textContent + '.\r\nWoooooo!';
 	document.body.appendChild(winMessage);
 
 	const playAgainButton = document.createElement('button');
