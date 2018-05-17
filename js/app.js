@@ -16,7 +16,7 @@ const shuffle = (array) => {
     }
 
     return array;
-}
+};
 
 /*
  * Display the cards on the page
@@ -87,7 +87,7 @@ document.addEventListener('DOMContentLoaded', function startTimer() {
 const flipCard = (card) => {
 	card.className += ' open show';
 	openCards.push(card);
-}
+};
 
 const displayWinMessage = () => {
 	/* <div style="text-align: center; padding: 10% 0">
@@ -122,7 +122,7 @@ const displayWinMessage = () => {
 		window.location.reload();
 	}
 	winMessage.appendChild(playAgainButton);
-}
+};
 
 const checkCards = (cards) => {
 	canFlip = false; // disable flipping cards while checking
@@ -156,7 +156,7 @@ const checkCards = (cards) => {
 		stars.childNodes[3].firstElementChild.className = 'far fa-star';
 		starCount--;
 	}
-}
+};
 
 deck.addEventListener('click', (event) => {
 	if (canFlip) {
