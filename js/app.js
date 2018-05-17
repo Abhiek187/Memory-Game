@@ -93,8 +93,8 @@ const displayWinMessage = () => {
 	/* <div style="text-align: center; padding: 10% 0">
 	 * 		<h1 style="font-weight: bold">Congratulations! You Won!</h1>
 	 * 		<p style="white-space: pre">With x moves and x stars in x:xx.\r\nWoooooo!</p>
-	 * 		<button type="button" style="background-color: limegreen; border-radius: 5px"
-	 *  		onclick="window.location.reload()">Play again!</button>
+	 * 		<button type="button" style="background-color: limegreen; border-radius: 5px;
+	 *  		width: 8em; height: 3em" onclick="window.location.reload()">Play again!</button>
 	 * </div>
 	 */
 	document.querySelector('.container').remove();
@@ -116,7 +116,8 @@ const displayWinMessage = () => {
 
 	const playAgainButton = document.createElement('button');
 	playAgainButton.setAttribute('type', 'button');
-	playAgainButton.setAttribute('style', 'background-color: limegreen; border-radius: 5px');
+	playAgainButton.setAttribute('style', 'background-color: limegreen; border-radius: 5px;' +
+		'width: 8em; height: 3em');
 	playAgainButton.textContent = 'Play again!';
 	playAgainButton.onclick = function() {
 		window.location.reload();

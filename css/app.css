@@ -84,6 +84,27 @@ h1 {
     font-size: 33px;
 }
 
+@media screen and (max-width: 660px) {
+    .deck {
+        width: 90%;
+        min-height: 0;
+        padding: 5%;
+    }
+
+    .deck .card {
+        width: 20%;
+        height: auto;
+        padding-top: 20%; /* make height eq. to square */
+        margin: 1%;
+    }
+
+    .deck .card.show,
+    .deck .card.match {
+        font-size: 150%;
+        padding: 5%;
+    }
+}
+
 /*
  * Styles for the Score Panel
  */
@@ -114,4 +135,14 @@ h1 {
 .score-panel .restart {
     float: right;
     cursor: pointer;
+}
+
+@media screen and (max-width: 345px) {
+    .score-panel {
+        width: 90%;
+    }
+
+    .score-panel .timer {
+        margin: 0 5% 0 15%;
+    }
 }
