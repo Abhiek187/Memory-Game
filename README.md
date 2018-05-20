@@ -8,4 +8,4 @@ The player must match the cards to win. A move counter, timer, and star rating s
 
 ## Dependencies
 
-This game is compatible across modern desktop, tablet, and phone browsers. The site is run on HTML, CSS, and JavaScript with interaction with the DOM. All icons are supplied by [Font Awesome](https://fontawesome.com/). Play the game [here](https://abhiek187.github.io/memory-game).
+This game is compatible across modern desktop, tablet, and phone browsers. The site is run on HTML, CSS, and JavaScript with interaction with the DOM. All icons are supplied by [Font Awesome](https://fontawesome.com/). Play the game [here](https://abhiek187.github.io/Memory-Game).
