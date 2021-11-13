@@ -1,5 +1,7 @@
 # Memory Game
 
+![Demo of Memory Game](Animation.gif)
+
 This is another implementation of the game Concentration using HTML, CSS, and JavaScript.
 
 ## Rules
